@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.nav-link {
+    position: relative;
+    padding: 8px 0; /* Memberi ruang untuk garis atas dan bawah */
+    font-weight: 500;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-link::before,
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%; /* Mulai dari tengah */
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.nav-link::before {
+    top: 0; /* Garis atas */
+    transform: translateX(-50%);
+}
+
+.nav-link::after {
+    bottom: 0; /* Garis bawah */
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before,
+.nav-link:hover::after {
+    width: 100%; /* Memperluas garis hingga selebar link saat hover */
+}
+
+.nav-link:hover {
+    color: #E2E8F0; /* Sedikit perubahan warna teks saat hover, opsional */
+}
