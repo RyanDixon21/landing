@@ -1,9 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Navbar Link Styling */
 .nav-link {
     position: relative;
-    padding: 8px 0; /* Memberi ruang untuk garis atas dan bawah */
+    padding: 8px 0;
     font-weight: 500;
     color: white;
     transition: color 0.3s ease;
@@ -13,7 +15,7 @@
 .nav-link::after {
     content: '';
     position: absolute;
-    left: 50%; /* Mulai dari tengah */
+    left: 50%;
     width: 0;
     height: 2px;
     background-color: white;
@@ -21,20 +23,57 @@
 }
 
 .nav-link::before {
-    top: 0; /* Garis atas */
+    top: 0;
     transform: translateX(-50%);
 }
 
 .nav-link::after {
-    bottom: 0; /* Garis bawah */
+    bottom: 0;
     transform: translateX(-50%);
 }
 
 .nav-link:hover::before,
 .nav-link:hover::after {
-    width: 100%; /* Memperluas garis hingga selebar link saat hover */
+    width: 100%;
 }
 
 .nav-link:hover {
-    color: #E2E8F0; /* Sedikit perubahan warna teks saat hover, opsional */
+    color: #E2E8F0;
+}
+
+/* Search Bar Styling */
+#nav-search {
+    width: 0;
+    opacity: 0;
+    display: none;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+#nav-search:not(.hidden) {
+    width: 150px; /* Ukuran input saat muncul */
+    opacity: 1;
+    display: inline-block;
+}
+
+#search-btn {
+    background-color: #1E40AF; /* Warna biru */
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-btn:hover {
+    background-color: #2563EB; /* Warna biru lebih terang saat hover */
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 768px) {
+    .nav-link {
+        @apply block w-full text-center;
+    }
+
+    #nav-search:not(.hidden) {
+        width: 100%; /* Textbox lebih lebar di mobile */
+    }
 }
