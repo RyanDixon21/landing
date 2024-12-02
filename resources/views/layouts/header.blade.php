@@ -1,64 +1,118 @@
-<header class="fixed top-0 w-full bg-blue-700 text-white p-4 shadow-md z-50">
-    <div class="container mx-auto flex items-center justify-between">
-        <a href="/" class="text-2xl font-semibold">Digital Raya Fokus</a>
-        <nav class="space-x-4 flex">
-            <a href="/" class="nav-link">Home</a>
-            <a href="/produk" class="nav-link">Produk</a>
-            <a href="/about" class="nav-link">Tentang Kami</a>
-            <a href="/contact" class="nav-link">Kontak</a>
-            <!-- Tombol untuk menampilkan input pencarian -->
-            <button id="search-btn" class="text-white px-3 py-2 bg-blue-800 rounded-md focus:outline-none" onclick="toggleSearch(event)">Cari</button>
-            
-            <!-- Input pencarian yang tersembunyi -->
-            <input type="text" id="nav-search" placeholder="Cari..." class="hidden px-3 py-2 text-black rounded-md focus:outline-none focus:ring focus:ring-blue-300" onkeyup="filterNavLinks()">
-        </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Raya Fokus</title>
+    <link rel="icon" href="asset/logo.png" type="image/x-icon">
+    @vite('resources/css/app.css')
+
+    <!-- Navbar -->
+<!-- Navbar -->
+<nav id="navbar" class="fixed top-4 left-4 right-4 bg-white rounded-lg border border-blue-500 shadow-lg mx-4 p-4 transition-all duration-300 ease-in-out z-50">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo dan Nama -->
+        <div class="flex items-center space-x-2">
+            <img src="asset/logo.png" alt="Logo" class="w-12 h-12">
+            <a id="brand" href="{{url('/')}}" class="font-bold text-lg text-black transition-colors duration-300">Digital Raya Fokus</a>
+        </div>
+
+        <!-- Links -->
+        <ul class="hidden md:flex space-x-4">
+            <li><a href="{{url('/')}}" class="font-bold text-yellow-500 nav-link hover:text-blue-500 flex">Beranda</a></li>
+            <li><a href="{{url('/profil')}}" class="font-bold nav-link hover:text-blue-500 flex">Profil</a></li>
+            <!-- Dropdown Layanan -->
+            <li class="relative group">
+                <button class="font-bold nav-link hover:text-blue-500 flex items-center focus:outline-none">
+                    Layanan
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <!-- Dropdown Menu -->
+                <ul 
+                    class="absolute left-0 mt-2 w-48 bg-yellow-600 border border-blue-300 rounded-lg shadow-lg opacity-0 transform -translate-y-4 scale-95 transition-all duration-300 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 z-10">
+                    <li><a href="{{url('/layanan/fitur1')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Konsultasi Teknologi</a></li>
+                    <li><a href="{{url('/layanan/fitur2')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Software Development</a></li>
+                    <li><a href="{{url('/layanan/fitur3')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Infrastruktur Teknologi</a></li>
+                    <li><a href="{{url('/layanan/fitur4')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Layanan Manajemen TI</a></li>
+                    <li><a href="{{url('/layanan/fitur5')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Pelatihan dan Sertifikasi</a></li>
+                </ul>
+            </li>
+            <li><a href="{{url('/contact')}}" class="font-bold nav-link hover:text-blue-500 flex">Contact</a></li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button id="menuButton" class="md:hidden text-gray-700 hover:text-blue-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
     </div>
-    <script>
-        function toggleSearch(event) {
-            event.stopPropagation(); // Mencegah klik pada tombol search agar tidak menutup input secara langsung
-            
-            var searchBox = document.getElementById('nav-search');
-            var searchBtn = document.getElementById('search-btn');
-            
-            // Menyembunyikan atau menampilkan search box
-            searchBox.classList.toggle('hidden');
-            
-            // Menyembunyikan atau menampilkan tombol search sesuai dengan keadaan search box
-            if (searchBox.classList.contains('hidden')) {
-                searchBtn.style.display = 'inline-block'; // Menampilkan tombol search saat search box hilang
-            } else {
-                searchBtn.style.display = 'none'; // Menyembunyikan tombol search saat search box muncul
-            }
-            
-            // Fokus pada input setelah tampil
-            if (!searchBox.classList.contains('hidden')) {
-                searchBox.focus();
-            }
-        }
     
-        // Fungsi untuk filter link berdasarkan input
-        function filterNavLinks() {
-            var filter = document.getElementById('nav-search').value.toLowerCase();
-            var links = document.querySelectorAll('.nav-link');
-            
-            links.forEach(function(link) {
-                if (link.innerText.toLowerCase().includes(filter)) {
-                    link.style.display = '';
-                } else {
-                    link.style.display = 'none';
-                }
-            });
+
+    <!-- Mobile Menu -->
+    <ul id="mobileMenu" class="absolute top-16 left-0 w-full bg-white shadow-lg rounded-lg hidden flex-col items-center space-y-4 p-4">
+        <li><a href="{{url('/')}}" class="nav-link hover:text-blue-500">Beranda</a></li>
+        <li><a href="{{url('/profil')}}" class="nav-link hover:text-blue-500">Profil</a></li>
+        <li>
+            <button id="mobileDropdownButton" class="nav-link hover:text-blue-500 flex items-center w-full justify-between">
+                Layanan
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <ul id="mobileDropdownMenu" class="hidden flex-col space-y-2 mt-2 pl-4">
+                <li><a href="{{url('/layanan/fitur1')}}" class="block px-4 py-2 hover:bg-blue-500 hover:text-white">Fitur 1</a></li>
+                <li><a href="{{url('/layanan/fitur2')}}" class="block px-4 py-2 hover:bg-blue-500 hover:text-white">Fitur 2</a></li>
+                <li><a href="{{url('/layanan/fitur3')}}" class="block px-4 py-2 hover:bg-blue-500 hover:text-white">Fitur 3</a></li>
+                <li><a href="{{url('/layanan/fitur4')}}" class="block px-4 py-2 hover:bg-blue-500 hover:text-white">Fitur 4</a></li>
+                <li><a href="{{url('/layanan/fitur5')}}" class="block px-4 py-2 hover:bg-blue-500 hover:text-white">Fitur 5</a></li>
+            </ul>
+        </li>
+        
+    </ul>
+</nav>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const brand = document.getElementById('brand');
+    const mobileDropdownButton = document.getElementById('mobileDropdownButton');
+const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+
+mobileDropdownButton.addEventListener('click', () => {
+    mobileDropdownMenu.classList.toggle('hidden');
+});
+
+
+    // Show/hide mobile menu
+    menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Change navbar style on scroll
+     window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      // Tambahkan gaya saat scroll
+      brand.classList.add('text-white');
+      brand.classList.remove('text-black');
+      navbar.classList.add('bg-head', 'text-white', 'top-0', 'left-0', 'right-0', 'mx-0', 'rounded-none');
+      navbar.classList.remove('bg-white','top-4', 'left-4', 'right-4', 'rounded-lg', 'mx-4');
+    } else {
+      // Kembalikan gaya awal
+      brand.classList.add('text-black');
+      brand.classList.remove('text-white');
+      navbar.classList.remove('bg-head', 'text-white', 'top-0', 'left-0', 'right-0', 'mx-0', 'rounded-none');
+      navbar.classList.add('bg-white', 'top-4', 'left-4', 'right-4', 'rounded-lg', 'mx-4');
+    }
+  });
+
+    // Menyembunyikan menu ketika mengklik di luar menu
+    document.addEventListener('click', (event) => {
+        if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
         }
-    
-        // Menutup search box jika klik di luar tombol pencarian dan input
-        window.addEventListener('click', function(event) {
-            var searchBox = document.getElementById('nav-search');
-            var searchBtn = document.getElementById('search-btn');
-            
-            if (!searchBox.contains(event.target) && !searchBtn.contains(event.target)) {
-                searchBox.classList.add('hidden'); // Menyembunyikan search box jika klik di luar
-                searchBtn.style.display = 'inline-block'; // Menampilkan tombol search kembali
-            }
-        });
-    </script>
-</header>
+    });
+</script>

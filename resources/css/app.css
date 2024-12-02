@@ -2,12 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Navbar Link Styling */
 .nav-link {
     position: relative;
     padding: 8px 0;
-    font-weight: 500;
-    color: white;
     transition: color 0.3s ease;
 }
 
@@ -18,7 +17,7 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background-color: white;
+    background-color: #50D890;
     transition: width 0.3s ease;
 }
 
@@ -38,8 +37,9 @@
 }
 
 .nav-link:hover {
-    color: #E2E8F0;
 }
+
+
 
 /* Search Bar Styling */
 #nav-search {
@@ -56,7 +56,7 @@
 }
 
 #search-btn {
-    background-color: #1E40AF; /* Warna biru */
+    background-color: #007cb9; /* Warna biru */
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -64,8 +64,10 @@
 }
 
 #search-btn:hover {
-    background-color: #2563EB; /* Warna biru lebih terang saat hover */
+    background-color: #007cb9; /* Warna biru lebih terang saat hover */
 }
+
+
 
 /* Responsif untuk mobile */
 @media (max-width: 768px) {

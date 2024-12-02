@@ -1,5 +1,5 @@
 <!-- Footer Template -->
-<footer class="bg-gray-800 text-white p-4 mt-10">
+<footer class="bg-foot text-white p-4 mt-10">
     <div class="container mx-auto text-center">
         <p>&copy; {{ date('Y') }} PT. Digital Raya Fokus</p>
         <div class="mt-2">
