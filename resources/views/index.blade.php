@@ -150,86 +150,48 @@
         <!-- Card 1 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
             <div class="mb-4">
-                <img src="asset/feature1.svg" alt="Feature 1" class="w-16 h-16 mx-auto">
+                <img src="asset/konsultasi.png" alt="Feature 1" class="w-20 h-18 mx-auto">
             </div>
             <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
-                Fitur 1
+                Konsultasi Teknologi
             </h3>
             <p class="text-gray-600 text-center">
-                Deskripsi singkat fitur 1 yang akan ditampilkan di sini.
+                Dapatkan solusi tepat untuk kebutuhan bisnis Anda dengan bantuan ahli teknologi kami.
             </p>
         </div>
 
         <!-- Card 2 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
             <div class="mb-4">
-                <img src="asset/feature2.svg" alt="Feature 2" class="w-16 h-16 mx-auto">
+                <img src="asset/develop.png" alt="Feature 2" class="w-20 h-20 mx-auto">
             </div>
             <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
-                Fitur 2
+                Software  Development
             </h3>
             <p class="text-gray-600 text-center">
-                Deskripsi singkat fitur 2 yang akan ditampilkan di sini.
+                Kami mengembangkan aplikasi sesuai kebutuhan untuk mendukung bisnis Anda.
             </p>
         </div>
 
         <!-- Card 3 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
             <div class="mb-4">
-                <img src="asset/feature3.svg" alt="Feature 3" class="w-16 h-16 mx-auto">
+                <img src="asset/manajemen.png" alt="Feature 3" class="w-16 h-16 mx-auto">
             </div>
             <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
-                Fitur 3
+                Layanan Manajemen IT
             </h3>
             <p class="text-gray-600 text-center">
-                Deskripsi singkat fitur 3 yang akan ditampilkan di sini.
+                Serahkan pengelolaan IT kepada kami dan fokus pada bisnis Anda.
             </p>
         </div>
     </div>
+    <br>
+    <center>
+    <button href="/kontak" class="mt-4 px-4 py-1 bg-head hover:bg-mint text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
+        Selengkapnya
+    </button></center>
 </section>
-
-        <!-- Section Visi dan Misi -->
-<section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-6 lg:px-16">
-        <div class="grid md:grid-cols-2 gap-12">
-            <!-- Card Visi -->
-            <div class="bg-white rounded-lg shadow-md p-6 group hover:shadow-lg transition-shadow duration-300">
-                <div class="flex items-center space-x-6">
-                    <!-- Icon -->
-                    <img src="crosshair.png" alt="Crosshair Icon" class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-110">
-                    <!-- Text -->
-                    <div>
-                        <h3 class="text-3xl font-semibold text-blue-700 group-hover:text-blue-500 group-hover:translate-x-1 transition-all duration-300">Visi</h3>
-                        <p class="mt-4 text-lg text-gray-700 group-hover:text-gray-900 group-hover:translate-y-1 transition-all duration-300">
-                            Menjadi penyedia layanan perpustakaan digital terbaik yang memudahkan akses ilmu pengetahuan bagi semua kalangan.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card Misi -->
-            <div class="bg-white rounded-lg shadow-md p-6 group hover:shadow-lg transition-shadow duration-300">
-                <div class="flex items-center space-x-6">
-                    <!-- Icon -->
-                    <img src="rocket.png" alt="Rocket Icon" class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-110">
-                    <!-- Text -->
-                    <div>
-                        <h3 class="text-3xl font-semibold text-green-700 group-hover:text-green-500 group-hover:translate-x-1 transition-all duration-300">Misi</h3>
-                        <ul class="mt-4 text-lg text-gray-700 group-hover:text-gray-900 group-hover:translate-y-1 transition-all duration-300 space-y-2">
-                            <li>- Menyediakan koleksi buku digital yang beragam dan up-to-date.</li>
-                            <li>- Memberikan layanan pencarian yang cepat dan mudah.</li>
-                            <li>- Mengintegrasikan teknologi modern untuk meningkatkan pengalaman pengguna.</li>
-                            <li>- Mendorong budaya membaca di era digital.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
     @include('layouts.footer')
 </body>
 </html>
