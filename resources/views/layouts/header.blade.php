@@ -21,7 +21,7 @@
         <ul class="hidden md:flex space-x-4">
             <li><a href="{{url('/')}}" class="font-bold text-yellow-500 nav-link hover:text-blue-500 flex">Beranda</a></li>
             <li><a href="{{url('/profil')}}" class="font-bold nav-link hover:text-blue-500 flex">Profil</a></li>
-            <!-- Dropdown Layanan -->
+            <li><a href="{{url('/portofolio')}}" class="font-bold nav-link hover:text-blue-500 flex">Portofolio</a></li>
             <li class="relative group">
                 <button class="font-bold nav-link hover:text-blue-500 flex items-center focus:outline-none">
                     Layanan

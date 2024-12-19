@@ -11,8 +11,14 @@ module.exports = {
         'mint': '#00FFCA',
         'head': '#088395',
         'foot': '#0A4D68',
-
+        green: {
+          500: '#22c55e',
       },
+      },
+      transitionDuration: {
+        '300': '300ms',
+        '500': '500ms',
+    },
       fontFamily: {
         // Menetapkan Open Sans sebagai font default untuk semua elemen yang menggunakan `font-sans`
         sans: ['Open Sans', 'sans-serif'],
