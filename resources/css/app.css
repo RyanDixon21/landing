@@ -55,20 +55,6 @@
     display: inline-block;
 }
 
-#search-btn {
-    background-color: #007cb9; /* Warna biru */
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#search-btn:hover {
-    background-color: #007cb9; /* Warna biru lebih terang saat hover */
-}
-
-
-
 /* Responsif untuk mobile */
 @media (max-width: 768px) {
     .nav-link {

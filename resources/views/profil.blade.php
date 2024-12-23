@@ -1,65 +1,76 @@
 <!DOCTYPE html>
+<script src="https://kit.fontawesome.com/050b5dcfea.js" crossorigin="anonymous"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Profil')</title>
+    <title>Profil Perusahaan</title>
+    <link rel="icon" href="asset/logo.png" type="image/x-icon">
     @vite('resources/css/app.css')
 </head>
-
-<body class="pt-18">
+<body class="pt-24"> <!-- Adjusted padding to prevent navbar overlap -->
     @include('layouts.header')
 
-    @section('content')
-    <div class="bg-white py-12">
-        <!-- Bagian About Us -->
-        <div class="container mx-auto px-6 lg:px-20">
-            <div class="flex flex-col-reverse lg:flex-row items-center">
-                <!-- Konten Teks -->
-                <div class="lg:w-1/2 text-center lg:text-left">
-                    <h2 class="text-4xl font-bold text-gray-900 leading-tight">
-                        Helping businesses succeed through the power of video.
-                    </h2>
-                    <p class="text-gray-600 mt-4">
-                        Video is the future of business in this digital-focused world. Our company uses video to change the way companies connect and communicate. We help organizations of all sizes humanize their communications and personalize their customer experiences.
-                    </p>
-                    <a href="signup" class="mt-6 inline-block bg-blue-600 text-white font-medium px-8 py-3 rounded-md shadow-md hover:bg-blue-700 transition">
-                        Sign Up for Free
-                    </a>
+    <section id="about-page" class="pt-12 pb-28 bg-gray-50">
+        <div class="container mx-auto px-6 lg:px-12">
+            <!-- Bagian Tentang Perusahaan -->
+            <div class="flex flex-wrap items-center mb-16"> <!-- Sudah ada mb-16 -->
+                <!-- Bagian Kiri -->
+                <div class="w-full lg:w-6/12 mb-8 lg:mb-0">
+                    <div class="section-title">
+                        <h3 class="text-3xl md:text-4xl font-bold text-green-500 leading-snug">Tentang Kami</h3>
+                    </div>
+                    <div class="about-cont mt-6">
+                        <p class="text-gray-600 leading-relaxed text-justify">
+                           <b> PT Digital Raya Fokus </b> adalah sebuah perusahaan baru yang bergerak di bidang teknologi informasi dan komunikasi. Meskipun baru didirikan pada tahun 2024, kami memiliki tim yang berpengalaman dan berdedikasi untuk memberikan solusi teknologi yang inovatif kepada pelanggan kami. Kami berkomitmen untuk menjadi mitra terpercaya dalam membantu perusahaan-perusahaan menghadapi tantangan dalam transformasi digital.
+                        </p>
+                        <button href="/kontak" class="mt-4 px-4 py-1 bg-green-500 hover:bg-green-800 text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
+                            Hubungi Kami
+                        </button>
+                    </div>
                 </div>
-                <!-- Gambar -->
-                <div class="lg:w-1/2 mb-8 lg:mb-0">
-                    <div class="relative">
-                        <div class="absolute -top-8 -left-8 bg-green-500 w-48 h-48 rounded-full opacity-30"></div>
-                        <img src="{{ asset('path-to-your-image/logo-or-illustration.png') }}" alt="Illustration" class="rounded-lg shadow-lg relative">
+            
+                <!-- Bagian Kanan -->
+                <div class="w-full lg:w-6/12 mt-8 lg:mt-0 flex justify-center mb-8">
+                    <div class="about-image">
+                        <img src="asset/logof.png" alt="Logo PT Digital Raya Fokus" class="h-80 object-contain w-full max-w-xs lg:max-w-md">
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <!-- Bagian Lanjutan -->
-    <div class="bg-gray-100 py-12">
-        <div class="container mx-auto px-6 lg:px-20">
-            <div class="flex flex-col lg:flex-row items-center">
-                <!-- Konten Teks -->
-                <div class="lg:w-1/2">
-                    <h3 class="text-2xl font-bold text-gray-900">
-                        Record and send videos to reach prospects, connect with customers
-                    </h3>
-                    <p class="text-gray-600 mt-4">
-                        Our platform goes beyond just video hosting and management. Connect with viewers through personalized video experiences. Explore analytical insights about your audience to drive better engagement and results.
-                    </p>
-                </div>
-                <!-- Gambar -->
-                <div class="lg:w-1/2 mt-8 lg:mt-0">
-                    <img src="{{ asset('path-to-your-image/feature-image.png') }}" alt="Feature Image" class="rounded-lg shadow-lg">
-                </div>
+            
+
+<!-- Bagian Visi dan Misi -->
+<div class="about-items pt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Visi -->
+        <div class="bg-white shadow-lg p-6 rounded-lg text-center">
+            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-green-100 text-green-500 rounded-full mx-auto">
+                <i class="fa-solid fa-crosshairs text-4xl"></i>
             </div>
+            <h4 class="text-xl font-semibold text-gray-800 mb-2">Visi</h4>
+            <p class="text-gray-600 leading-relaxed">
+                Menjadi pionir dalam menyediakan solusi teknologi yang inovatif dan memberikan kontribusi positif dalam mengubah lanskap bisnis melalui teknologi informasi.
+            </p>
+        </div>
+
+        <!-- Misi -->
+        <div class="bg-white shadow-lg p-6 rounded-lg text-center">
+            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-blue-100 text-blue-500 rounded-full mx-auto">
+                <i class="fa-solid fa-rocket text-4xl"></i>
+            </div>
+            <h4 class="text-xl font-semibold text-gray-800 mb-2">Misi</h4>
+            <ol class="list-decimal text-gray-600 leading-relaxed space-y-2 text-justify pl-6">
+                <li>Memberikan solusi teknologi yang terkini dan inovatif untuk mendukung kebutuhan bisnis pelanggan.</li>
+                <li>Menjadi mitra yang dapat diandalkan dan memberikan layanan berkualitas tinggi serta dukungan teknis yang handal.</li>
+                <li>Terus melakukan inovasi dan peningkatan dalam menyediakan solusi teknologi yang relevan dengan perkembangan industri.</li>
+                <li>Membangun hubungan yang saling menguntungkan dengan pelanggan, mitra, dan pihak terkait lainnya.</li>
+            </ol>
         </div>
     </div>
+</div>
+
+    </section>
+
     @include('layouts.footer')
 </body>
 </html>
-
- 

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://kit.fontawesome.com/050b5dcfea.js" crossorigin="anonymous"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Beranda')</title>
+    <link rel="icon" href="asset/logo.png" type="image/x-icon">
     @vite('resources/css/app.css')
 </head>
 <body class="pt-18">
@@ -148,9 +150,9 @@
     <!-- Card Section -->
     <div class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Card 1 -->
-        <div class="bg-white shadow-lg rounded-lg p-6">
-            <div class="mb-4">
-                <img src="asset/konsultasi.png" alt="Feature 1" class="w-20 h-18 mx-auto">
+        <div class="bg-white shadow-lg p-6 rounded-lg text-center">
+            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-blue-100 text-green-500 rounded-full mx-auto">
+                <i class="fa-regular fa-handshake text-4xl"></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
                 Konsultasi Teknologi
@@ -162,8 +164,8 @@
 
         <!-- Card 2 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
-            <div class="mb-4">
-                <img src="asset/develop.png" alt="Feature 2" class="w-20 h-20 mx-auto">
+            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-blue-100 text-green-500 rounded-full mx-auto">
+                <i class="fa-solid fa-code text-4xl"></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
                 Software  Development
@@ -175,8 +177,8 @@
 
         <!-- Card 3 -->
         <div class="bg-white shadow-lg rounded-lg p-6">
-            <div class="mb-4">
-                <img src="asset/manajemen.png" alt="Feature 3" class="w-16 h-16 mx-auto">
+            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-blue-100 text-green-500 rounded-full mx-auto">
+                <i class="fa-solid fa-list-check text-4xl"></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
                 Layanan Manajemen IT

@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Raya Fokus</title>
-    <link rel="icon" href="asset/logo.png" type="image/x-icon">
+
+    <!-- Title -->
+    <title>Digital Raya Fokus - Solusi Transformasi Digital</title>
+    
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Digital Raya Fokus adalah perusahaan teknologi yang menyediakan solusi inovatif dalam transformasi digital, pengembangan perangkat lunak, dan layanan konsultasi.">
+    <meta name="keywords" content="Digital Raya Fokus, teknologi, transformasi digital, software development, konsultasi teknologi, infrastruktur IT">
+    <meta name="author" content="PT Digital Raya Fokus">
+    <link rel="canonical" href="{{ url()->current() }}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Digital Raya Fokus - Solusi Transformasi Digital">
+    <meta property="og:description" content="Digital Raya Fokus adalah perusahaan teknologi yang menyediakan solusi inovatif dalam transformasi digital.">
+    <meta property="og:image" content="{{ asset('asset/logo.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Raya Fokus - Solusi Transformasi Digital">
+    <meta name="twitter:description" content="Kami membantu transformasi digital Anda melalui konsultasi teknologi, pengembangan software, dan layanan IT.">
+    <meta name="twitter:image" content="{{ asset('asset/logo.png') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('asset/logo.png') }}" type="image/x-icon">
+
+    <!-- Tailwind CSS -->
     @vite('resources/css/app.css')
 
     <!-- Navbar -->
@@ -13,34 +38,34 @@
     <div class="container mx-auto flex justify-between items-center">
         <!-- Logo dan Nama -->
         <div class="flex items-center space-x-2">
-            <img src="asset/logo.png" alt="Logo" class="w-12 h-12">
-            <a id="brand" href="{{url('/')}}" class="font-bold text-lg text-white transition-colors duration-300">Digital Raya Fokus</a>
+            <img src="{{ asset('asset/logo.png') }}" alt="Logo Digital Raya Fokus - Solusi Transformasi Digital" class="w-12 h-12">
+            <a id="brand" href="{{ url('/') }}" class="font-bold text-lg text-white transition-colors duration-300">Digital Raya Fokus</a>
         </div>
 
-        <!-- Links -->
-        <ul class="hidden md:flex space-x-4">
-            <li><a href="{{url('/')}}" class="font-bold text-yellow-500 nav-link hover:text-blue-500 flex">Beranda</a></li>
-            <li><a href="{{url('/profil')}}" class="font-bold nav-link hover:text-blue-500 flex">Profil</a></li>
-            <li><a href="{{url('/portofolio')}}" class="font-bold nav-link hover:text-blue-500 flex">Portofolio</a></li>
-            <li class="relative group">
-                <button class="font-bold nav-link hover:text-blue-500 flex items-center focus:outline-none">
-                    Layanan
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <!-- Dropdown Menu -->
-                <ul 
-                    class="absolute left-0 mt-2 w-48 bg-yellow-600 border border-blue-300 rounded-lg shadow-lg opacity-0 transform -translate-y-4 scale-95 transition-all duration-300 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 z-10">
-                    <li><a href="{{url('/layanan/fitur1')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Konsultasi Teknologi</a></li>
-                    <li><a href="{{url('/layanan/fitur2')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Software Development</a></li>
-                    <li><a href="{{url('/layanan/fitur3')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Infrastruktur Teknologi</a></li>
-                    <li><a href="{{url('/layanan/fitur4')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Layanan Manajemen TI</a></li>
-                    <li><a href="{{url('/layanan/fitur5')}}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Pelatihan dan Sertifikasi</a></li>
-                </ul>
-            </li>
-            <li><a href="{{url('/contact')}}" class="font-bold nav-link hover:text-blue-500 flex">Contact</a></li>
+ <!-- Links -->
+ <ul class="hidden md:flex space-x-4">
+    <li><a href="{{ url('/') }}" class="font-bold text-yellow-500 nav-link hover:text-blue-500 flex">Beranda</a></li>
+    <li><a href="{{ url('/profil') }}" class="font-bold nav-link hover:text-blue-500 flex">Profil</a></li>
+    <li><a href="{{ url('/portofolio') }}" class="font-bold nav-link hover:text-blue-500 flex">Portofolio</a></li>
+    <li class="relative group">
+        <button class="font-bold nav-link hover:text-blue-500 flex items-center focus:outline-none">
+            Layanan
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </button>
+        <!-- Dropdown Menu -->
+        <ul 
+            class="absolute left-0 mt-2 w-48 bg-yellow-600 border border-blue-300 rounded-lg shadow-lg opacity-0 transform -translate-y-4 scale-95 transition-all duration-300 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 z-10">
+            <li><a href="{{ url('/layanan/fitur1') }}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Konsultasi Teknologi</a></li>
+            <li><a href="{{ url('/layanan/fitur2') }}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Software Development</a></li>
+            <li><a href="{{ url('/layanan/fitur3') }}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Infrastruktur Teknologi</a></li>
+            <li><a href="{{ url('/layanan/fitur4') }}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Layanan Manajemen TI</a></li>
+            <li><a href="{{ url('/layanan/fitur5') }}" class="block px-4 py-2 hover:bg-yellow-500 hover:text-white">Pelatihan dan Sertifikasi</a></li>
         </ul>
+    </li>
+    <li><a href="{{ url('/contact') }}" class="font-bold nav-link hover:text-blue-500 flex">Contact</a></li>
+</ul>
 
          <!-- Mobile Menu Button -->
          <button id="menuButton" class="md:hidden text-gray-700 hover:text-blue-500">
@@ -69,7 +94,7 @@
                 <li><a href="{{url('/layanan/fitur5')}}" class="block px-4 py-2 hover:bg-blue-500 hover:text-white">Fitur 5</a></li>
             </ul>
         </li>
-        <li><a href="{{url('/kontak')}}" class="nav-link hover:text-blue-500">Contact</a></li>
+        <li><a href="{{url('/contact')}}" class="nav-link hover:text-blue-500">Contact</a></li>
     </ul>
 </nav>
 
@@ -115,3 +140,4 @@ mobileDropdownButton.addEventListener('click', () => {
         }
     });
 </script>
+</head>
