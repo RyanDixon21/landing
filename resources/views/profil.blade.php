@@ -24,8 +24,8 @@
                         <p class="text-gray-600 leading-relaxed text-justify">
                            <b> PT Digital Raya Fokus </b> adalah sebuah perusahaan baru yang bergerak di bidang teknologi informasi dan komunikasi. Meskipun baru didirikan pada tahun 2024, kami memiliki tim yang berpengalaman dan berdedikasi untuk memberikan solusi teknologi yang inovatif kepada pelanggan kami. Kami berkomitmen untuk menjadi mitra terpercaya dalam membantu perusahaan-perusahaan menghadapi tantangan dalam transformasi digital.
                         </p>
-                        <button href="/kontak" class="mt-4 px-4 py-1 bg-green-500 hover:bg-green-800 text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
-                            Hubungi Kami
+                        <button class="mt-4 px-4 py-1 bg-green-500 hover:bg-green-800 text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
+                          <a href="/contact" >  Hubungi Kami </a>
                         </button>
                     </div>
                 </div>

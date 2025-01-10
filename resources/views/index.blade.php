@@ -81,7 +81,7 @@
                         <h2 class="text-2xl md:text-4xl font-bold text-white animate-fade-in-down leading-snug">
                             Konsultasikan Kebutuhan Anda dan Dapatkan Solusi Terbaik
                         </h2>
-                        <a href="/kontak" class="mt-6 px-6 py-3 bg-head hover:bg-mint text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
+                        <a href="/contact" class="mt-6 px-6 py-3 bg-head hover:bg-mint text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
                             Hubungi Kami
                         </a>
                     </div>
@@ -190,8 +190,10 @@
     </div>
     <br>
     <center>
-    <button href="/kontak" class="mt-4 px-4 py-1 bg-head hover:bg-mint text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
-        Selengkapnya
+    <button class="mt-4 px-4 py-1 bg-head hover:bg-mint text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
+        <a href="/layanan">
+            Selengkapnya
+        </a>
     </button></center>
 </section>
     @include('layouts.footer')

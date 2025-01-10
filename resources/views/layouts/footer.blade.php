@@ -26,7 +26,7 @@
 
         <!-- Kolom 3: Kontak -->
         <div>
-            <h3 class="text-lg font-semibold mb-4">Contact</h3>
+            <h3 class="text-lg font-semibold mb-2">Contact</h3>
             <ul class="space-y-4">
                 <li class="flex items-center space-x-3">
                     <!-- Ikon Map -->
@@ -57,7 +57,6 @@
         </div>
     </div>
 
-    <!-- Social Media -->
     <div class="mt-8 text-center">
         <p class="mt-4 text-sm">&copy; 2024 | PT. Digital Raya Fokus</p>
     </div>

@@ -42,6 +42,7 @@
             <a id="brand" href="{{ url('/') }}" class="font-bold text-lg text-white transition-colors duration-300">Digital Raya Fokus</a>
         </div>
 
+
  <!-- Links -->
  <ul class="hidden md:flex space-x-4">
     <li><a href="{{ url('/') }}" class="font-bold text-yellow-500 nav-link hover:text-blue-500 flex">Beranda</a></li>
@@ -49,7 +50,9 @@
     <li><a href="{{ url('/portofolio') }}" class="font-bold nav-link hover:text-blue-500 flex">Portofolio</a></li>
     <li class="relative group">
         <button class="font-bold nav-link hover:text-blue-500 flex items-center focus:outline-none">
-            Layanan
+            <a href="/layanan">
+                Layanan
+            </a>
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
@@ -65,7 +68,82 @@
         </ul>
     </li>
     <li><a href="{{ url('/contact') }}" class="font-bold nav-link hover:text-blue-500 flex">Contact</a></li>
+    @auth
+    <!-- Jika pengguna login -->
+    <li>
+        <a href="{{ url('/') }}" class="font-bold text-yellow-500 nav-link flex">Admin</a>
+    </li>
+    <li>
+        <form action="{{ route('logout') }}" method="POST" class="inline">
+            @csrf
+            <button type="submit" class="bg-foot text-white font-bold py-2 px-2 rounded hover:bg-biru">
+                Logout
+            </button>
+        </form>
+    </li>
+@else
+    <!-- Jika pengguna belum login -->
+    <li>
+        <button id="loginButton" class="bg-foot text-white font-bold py-2 px-2 rounded hover:bg-biru">
+            Login
+        </button>
+    </li>
+@endauth
 </ul>
+
+<!-- Modal Login -->
+<div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-yellow-500 rounded-lg shadow-lg p-6 w-80">
+        <h2 class="text-xl font-bold mb-4 text-center">Login</h2>
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-3 py-2 text-gray-500 border rounded-lg focus:outline-none focus:ring focus:ring-yellow-500" placeholder="Email" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-bold mb-2">Password</label>
+                <input type="password" id="password" name="password" class="w-full px-3 py-2 text-gray-500 border rounded-lg focus:outline-none focus:ring focus:ring-yellow-500" placeholder="Password" required>
+            </div>
+            <button type="submit" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600">
+                Login
+            </button>
+        </form>
+        <button id="closeLoginModal" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600">
+            Batal
+        </button>
+    </div>
+</div>
+
+<div id="notification" 
+     class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 hidden bg-green-500 text-white py-2 px-6 rounded-lg shadow-lg transition-transform transform translate-y-20 opacity-0">
+    <span id="notificationMessage"></span>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const notification = document.getElementById('notification');
+        const notificationMessage = document.getElementById('notificationMessage');
+
+        @if (session('status'))
+            // Atur pesan notifikasi
+            notificationMessage.textContent = "{{ session('status') }}";
+
+            // Tampilkan notifikasi
+            notification.classList.remove('hidden', 'opacity-0', 'translate-y-20');
+            notification.classList.add('translate-y-0', 'opacity-100');
+
+            // Sembunyikan notifikasi setelah 3 detik
+            setTimeout(() => {
+                notification.classList.add('opacity-0', 'translate-y-20');
+                setTimeout(() => notification.classList.add('hidden'), 500); // Sembunyikan elemen setelah animasi selesai
+            }, 3000);
+        @endif
+    });
+</script>
+
+
 
          <!-- Mobile Menu Button -->
          <button id="menuButton" class="md:hidden text-gray-700 hover:text-blue-500">
@@ -80,7 +158,7 @@
         <li><a href="{{url('/')}}" class="nav-link hover:text-blue-500">Beranda</a></li>
         <li><a href="{{url('/profil')}}" class="nav-link hover:text-blue-500">Profil</a></li>
         <li>
-            <button id="mobileDropdownButton" class="nav-link hover:text-blue-500 flex items-center w-full justify-between">
+            <button  id="mobileDropdownButton"  class="nav-link hover:text-blue-500 flex items-center w-full justify-between">
                 Layanan
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -104,7 +182,23 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const brand = document.getElementById('brand');
     const mobileDropdownButton = document.getElementById('mobileDropdownButton');
-const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+    const mobileDropdownMenu = document.getElementById('mobileDropdownMenu');
+    const loginButton = document.getElementById('loginButton');
+const loginModal = document.getElementById('loginModal');
+const closeLoginModal = document.getElementById('closeLoginModal');
+
+
+// Buka modal login
+loginButton.addEventListener('click', () => {
+    loginModal.classList.remove('hidden');
+});
+
+
+// Tutup modal login
+closeLoginModal.addEventListener('click', () => {
+    loginModal.classList.add('hidden');
+});
+
 
 mobileDropdownButton.addEventListener('click', () => {
     mobileDropdownMenu.classList.toggle('hidden');
@@ -139,5 +233,7 @@ mobileDropdownButton.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
         }
     });
+
+    
 </script>
 </head>
