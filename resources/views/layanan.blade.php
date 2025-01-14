@@ -3,65 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layanan</title>
-    @vite('resources/css/app.css') <!-- Include Tailwind CSS -->
+    <title>{{ $settings['company_name'] }} - Layanan</title>
+    <meta name="description" content="Layanan teknologi informasi komprehensif untuk mendukung transformasi digital bisnis Anda">
+    <script src="https://kit.fontawesome.com/050b5dcfea.js" crossorigin="anonymous"></script>
+    @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 text-gray-800">
-    <!-- Include Header -->
+<body class="bg-white">
     @include('layouts.header')
 
-   <!-- Hero Section -->
-<!-- Hero Section -->
-<section class="bg-gray-100 py-12 mt-20">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
-        <!-- Left Section -->
-        <div class="md:w-1/3 text-center md:text-left">
-            <h1 class="text-3xl font-bold text-blue-800">Layanan Kami</h1>
-            <p class="mt-4 text-gray-600">
-                Dengan layanan Digital Raya, perusahaan mendapatkan keunggulan kompetitif di era digital dengan memanfaatkan teknologi terbaru dan terus berinovasi untuk memenuhi tuntutan pasar yang terus berkembang.
-            </p>
+    <!-- Hero Section -->
+    <section class="pt-28 pb-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-gray-100 opacity-20"></div>
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center max-w-4xl mx-auto">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-4 block">Layanan Kami</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                    Solusi Digital untuk Bisnis Anda
+                </h1>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 leading-relaxed mb-12">
+                    Kami menyediakan berbagai layanan teknologi informasi yang komprehensif untuk mendukung transformasi digital bisnis Anda
+                </p>
+            </div>
+
+            <!-- Service Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+                <!-- Konsultasi Teknologi -->
+                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-green-500/5 transform -skew-y-12 group-hover:skew-y-0 transition-transform duration-500"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+                            <i class="fa-regular fa-handshake text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                            Konsultasi Teknologi
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Dapatkan solusi tepat untuk kebutuhan bisnis Anda dengan bantuan ahli teknologi kami.
+                        </p>
+                        <a href="{{ route('layanan.show', 'konsultasi') }}" class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Software Development -->
+                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-green-500/5 transform -skew-y-12 group-hover:skew-y-0 transition-transform duration-500"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+                            <i class="fa-solid fa-code text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                            Software Development
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Kami mengembangkan aplikasi sesuai kebutuhan untuk mendukung bisnis Anda.
+                        </p>
+                        <a href="/layanan/software" class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Infrastruktur Teknologi -->
+                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-green-500/5 transform -skew-y-12 group-hover:skew-y-0 transition-transform duration-500"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+                            <i class="fa-solid fa-network-wired text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                            Infrastruktur Teknologi
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Solusi infrastruktur IT yang handal, aman, dan scalable untuk mendukung operasional bisnis Anda.
+                        </p>
+                        <a href="/layanan/infrastruktur" class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Layanan Manajemen TI -->
+                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-green-500/5 transform -skew-y-12 group-hover:skew-y-0 transition-transform duration-500"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+                            <i class="fa-solid fa-list-check text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                            Layanan Manajemen TI
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Serahkan pengelolaan IT kepada kami dan fokus pada bisnis Anda.
+                        </p>
+                        <a href="/layanan/manajemen" class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pelatihan dan Sertifikasi -->
+                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-green-500/5 transform -skew-y-12 group-hover:skew-y-0 transition-transform duration-500"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl mb-6 transform group-hover:rotate-6 transition-transform duration-300">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                            Pelatihan dan Sertifikasi
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Program pelatihan dan sertifikasi untuk meningkatkan kompetensi tim IT Anda.
+                        </p>
+                        <a href="/layanan/pelatihan" class="inline-flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
+                            <span>Pelajari Lebih Lanjut</span>
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Right Section -->
-        <div class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 md:mt-0">
-            <!-- Service 1 -->
-            <div class="bg-white shadow-md rounded-lg p-6 text-center">
-                <h2 class="text-xl font-bold text-blue-800">Pembuatan Aplikasi Web, Android & iOS</h2>
-                <p class="mt-4 text-gray-600">
-                    Membangun aplikasi web, mobile Android, iOS, dan teknologi terbaru lainnya untuk memenuhi kebutuhan bisnis klien.
-                </p>
-            </div>
-            <!-- Service 2 -->
-            <div class="bg-white shadow-md rounded-lg p-6 text-center">
-                <h2 class="text-xl font-bold text-blue-800">Transformasi Proses Bisnis</h2>
-                <p class="mt-4 text-gray-600">
-                    Mengidentifikasi proses-proses existing yang dapat diotomatisasi untuk meningkatkan efisiensi dan produktivitas.
-                </p>
-            </div>
-            <!-- Service 3 -->
-            <div class="bg-white shadow-md rounded-lg p-6 text-center">
-                <h2 class="text-xl font-bold text-blue-800">Konsultasi dan Strategi Digital</h2>
-                <p class="mt-4 text-gray-600">
-                    Memberikan panduan strategis untuk mengintegrasikan teknologi baru untuk merumuskan strategi inovatif.
-                </p>
-            </div>
-            <!-- Service 4 -->
-            <div class="bg-white shadow-md rounded-lg p-6 text-center">
-                <h2 class="text-xl font-bold text-blue-800">Desain & Pembuatan Website</h2>
-                <p class="mt-4 text-gray-600">
-                    Wujudkan website profesional untuk berbagai kebutuhan dengan tampilan, fitur, dan teknologi terbaru.
-                </p>
-            </div>
-            <!-- Service 5 -->
-            <div class="bg-white shadow-md rounded-lg p-6 text-center">
-                <h2 class="text-xl font-bold text-blue-800">Pelatihan dan Sertifikasi</h2>
-                <p class="mt-4 text-gray-600">
-                    Memberikan pelatihan teknis dan sertifikasi untuk meningkatkan keterampilan SDM.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- Include Footer -->
+    </section>
+
     @include('layouts.footer')
 </body>
 </html>

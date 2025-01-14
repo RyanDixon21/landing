@@ -1,201 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://kit.fontawesome.com/050b5dcfea.js" crossorigin="anonymous"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Beranda')</title>
-    <link rel="icon" href="asset/logo.png" type="image/x-icon">
+    <title>{{ $settings['pt1'] ?? 'Beranda' }} - {{ $settings['company_name'] ?? 'PT. Digital Raya Fokus' }}</title>
+    <meta name="description" content="{{ $settings['company_description'] ?? '' }}">
+    <meta name="keywords" content="{{ $settings['company_keywords'] ?? '' }}">
+    <link rel="icon" href="{{ $settings['company_logo'] ?? 'asset/logo.png' }}" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/050b5dcfea.js" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
-</head>
-<body class="pt-18">
-    @include('layouts.header')
-
     <style>
-        /* Custom animation for text */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    
-        .animate-fade-in-down {
-            animation: fadeInDown 1s ease-out;
-        }
-    
-        .animate-fade-in-up {
-            animation: fadeInUp 1s ease-out;
-        }
-    
-        /* Slider Styles */
         .slide {
             position: absolute;
             inset: 0;
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
-    
-        .slide.opacity-100 {
+        
+        .slide.active {
             opacity: 1;
         }
-    
-        .slide.hidden {
-            display: none;
-        }
     </style>
-    
-    <!-- Slider Section -->
-    <div class="relative h-screen mt-16 md:mt-0 overflow-hidden">
-        <div class="absolute inset-0 h-full flex items-center justify-center">
+</head>
+<body class="bg-white">
+    @include('layouts.header')
+
+    <!-- Hero Section -->
+    <div class="relative h-screen overflow-hidden">
+        <div class="absolute inset-0 z-0">
             <!-- Slide 1 -->
-            <div class="slide opacity-0 hidden">
-                <img src="asset/image1.jpeg" alt="Image 1" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-head opacity-30"></div>
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 animate-slide">
-                    <h2 class="text-2xl md:text-5xl font-bold text-white animate-fade-in-down">Selamat Datang di PT. Digital Raya Fokus</h2>
-                    <p class="text-md md:text-xl text-white mt-2 animate-fade-in-up">Mitra terpercaya Anda untuk solusi IT yang inovatif dan profesional.</p>
-                </div>
-            </div>
-    
-            <div class="slide opacity-0 hidden">
-                <img src="asset/image2.jpeg" alt="Image 2" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-head opacity-30"></div>
-                <div class="absolute inset-0 flex items-center px-8 md:px-16">
-                    <div class="max-w-sm">
-                        <h2 class="text-2xl md:text-4xl font-bold text-white animate-fade-in-down leading-snug">
-                            Konsultasikan Kebutuhan Anda dan Dapatkan Solusi Terbaik
-                        </h2>
-                        <a href="/contact" class="mt-6 px-6 py-3 bg-head hover:bg-mint text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
-                            Hubungi Kami
-                        </a>
+            <div class="slide opacity-100">
+                @if(isset($settings['ic1']) && $settings['ic1'])
+                <img src="{{ asset('storage/' . $settings['ic1']) }}" 
+                     alt="card1 {{ $settings['ic1'] ?? '' }}" 
+                     class="w-full h-full object-cover">
+            @else
+                <img src="{{ asset('images/card1.jpg') }}" 
+                     alt="slide1" 
+                     class="w-full h-full object-cover">
+            @endif
+                <div class="absolute inset-0 bg-foot/50"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center px-4 max-w-5xl mx-auto">
+                        <h1 class="text-4xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                            {{ $settings['tc1'] ?? 'Transformasi Digital untuk Masa Depan' }}
+                        </h1>
+                        <p class="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+                            {{ $settings['dc1'] ?? 'Solusi teknologi inovatif untuk mengakselerasi pertumbuhan bisnis Anda' }}
+                        </p>
                     </div>
                 </div>
             </div>
-            
-        </div>            
-    
-    </div>
-    
-    <script>
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const slideDuration = 10000; // 10 seconds
-    
-        // Function to show the current slide
-        function showSlides(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.add('opacity-0', 'hidden');
-                slide.classList.remove('opacity-100');
-                if (i === index) {
-                    slide.classList.remove('hidden');
-                    setTimeout(() => {
-                        slide.classList.add('opacity-100');
-                        slide.classList.remove('opacity-0');
-                    }, 10);
-                }
-            });
-        }
-    
-        // Function to navigate slides
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % slides.length;
-            showSlides(slideIndex);
-        }
-    
-        function prevSlide() {
-            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-            showSlides(slideIndex);
-        }
-    
-        // Initialize slider
-        showSlides(slideIndex);
-    
-        // Automatic slide transition
-        setInterval(nextSlide, slideDuration);
-    
-        // Keyboard navigation
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'ArrowRight') {
-                nextSlide();
-            } else if (event.key === 'ArrowLeft') {
-                prevSlide();
-            }
-        });
-</script>    
 
-<section class="py-16 bg-gray-100">
-    <!-- Judul -->
-    <div class="text-center mb-12">
-        <h3 class="text-3xl md:text-5xl font-bold text-head">
-            Solusi untuk Segala<br> Kebutuhan Anda
-        </h3>
-    </div>
-
-    <!-- Card Section -->
-    <div class="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div class="bg-white shadow-lg p-6 rounded-lg text-center">
-            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-blue-100 text-green-500 rounded-full mx-auto">
-                <i class="fa-regular fa-handshake text-4xl"></i>
+            <!-- Slide 2 -->
+            <div class="slide opacity-0">
+                @if(isset($settings['ic2']) && $settings['ic2'])
+                <img src="{{ asset('storage/' . $settings['ic2']) }}" 
+                     alt="card2 {{ $settings['ic2'] ?? '' }}" 
+                     class="w-full h-full object-cover">
+            @else
+                <img src="{{ asset('images/card2.jpg') }}" 
+                     alt="slide2" 
+                     class="w-full h-full object-cover">
+            @endif
+                <div class="absolute inset-0 bg-foot/50"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="text-center px-4 max-w-5xl mx-auto">
+                        <h1 class="text-4xl md:text-7xl font-bold text-white mb-8 leading-tight">
+                            {{ $settings['tc2'] ?? 'Solusi Digital Terpercaya' }}
+                        </h1>
+                        <p class="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+                            {{ $settings['dc2'] ?? 'Tingkatkan efisiensi dan produktivitas bisnis Anda dengan teknologi modern' }}
+                        </p>
+                    </div>
+                </div>
             </div>
-            <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
-                Konsultasi Teknologi
-            </h3>
-            <p class="text-gray-600 text-center">
-                Dapatkan solusi tepat untuk kebutuhan bisnis Anda dengan bantuan ahli teknologi kami.
-            </p>
         </div>
 
-        <!-- Card 2 -->
-        <div class="bg-white shadow-lg rounded-lg p-6">
-            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-blue-100 text-green-500 rounded-full mx-auto">
-                <i class="fa-solid fa-code text-4xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
-                Software  Development
-            </h3>
-            <p class="text-gray-600 text-center">
-                Kami mengembangkan aplikasi sesuai kebutuhan untuk mendukung bisnis Anda.
-            </p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white shadow-lg rounded-lg p-6">
-            <div class="flex items-center justify-center w-24 h-24 mb-4 bg-blue-100 text-green-500 rounded-full mx-auto">
-                <i class="fa-solid fa-list-check text-4xl"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-800 text-center mb-2">
-                Layanan Manajemen IT
-            </h3>
-            <p class="text-gray-600 text-center">
-                Serahkan pengelolaan IT kepada kami dan fokus pada bisnis Anda.
-            </p>
+        <!-- Navigation Buttons -->
+        <div class="absolute inset-x-0 bottom-10 z-10 flex justify-center gap-4">
+            <a href="/contact" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300">
+                Mulai Sekarang
+            </a>
+            <a href="/about" class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300">
+                Pelajari Lebih Lanjut
+            </a>
         </div>
     </div>
-    <br>
-    <center>
-    <button class="mt-4 px-4 py-1 bg-head hover:bg-mint text-white font-semibold text-lg rounded-md block text-center animate-fade-in-up">
-        <a href="/layanan">
-            Selengkapnya
-        </a>
-    </button></center>
-</section>
+
+    <!-- Services Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    {{ $settings['index_headline'] ?? 'Layanan Unggulan' }}
+                </h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Kami menyediakan berbagai layanan teknologi informasi untuk membantu bisnis Anda berkembang di era digital
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <a href="{{ route('layanan.show', 'software') }}" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
+                        <i class="fas fa-laptop-code text-2xl text-blue-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600">{{ $settings['ts1'] ?? 'Pengembangan Software' }}</h3>
+                    <p class="text-gray-600">{{ $settings['ds1'] ?? 'Solusi software yang disesuaikan dengan kebutuhan bisnis Anda.' }}</p>
+                </a>
+                <!-- Service 2 -->
+                <a href="{{ route('layanan.show', 'infrastruktur') }}" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
+                        <i class="fas fa-server text-2xl text-green-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-green-600">{{ $settings['ts2'] ?? 'Infrastruktur IT' }}</h3>
+                    <p class="text-gray-600">{{ $settings['ds2'] ?? 'Layanan infrastruktur IT yang handal dan aman.' }}</p>
+                </a>
+                <!-- Service 3 -->
+                <a href="{{ route('layanan.show', 'konsultasi') }}" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
+                        <i class="fas fa-lightbulb text-2xl text-purple-600 group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600">{{ $settings['ts3'] ?? 'Konsultasi IT' }}</h3>
+                    <p class="text-gray-600">{{ $settings['ds3'] ?? 'Konsultasi profesional untuk transformasi digital bisnis Anda.' }}</p>
+                </a>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="/layanan" class="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl transition-all duration-300 group">
+                    <span>Jelajahi Semua Layanan</span>
+                    <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
     @include('layouts.footer')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            window.showSlide = function(index) {
+                slides.forEach(slide => slide.style.opacity = '0');
+                slides[index].style.opacity = '1';
+            }
+
+            window.nextSlide = function() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            window.prevSlide = function() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+            });
+
+            // Auto slide every 8 seconds (diperlambat dari 5 detik menjadi 8 detik)
+            setInterval(nextSlide, 8000);
+        });
+    </script>
 </body>
 </html>

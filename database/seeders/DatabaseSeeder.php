@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::create([
             'name' => 'Admin',
+            'role' => 'admin',
             'email' => 'admin@digrafo.com',
             'password' => bcrypt('password123'),
         ]);
