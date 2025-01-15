@@ -21,20 +21,6 @@
                 <p class="text-gray-400 leading-relaxed">
                     {{ $settings['company_description'] }}
                 </p>
-                <div class="flex space-x-4">
-                    <a href="#" class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center group hover:bg-blue-600 transition-all duration-300">
-                        <i class="fab fa-facebook-f text-blue-400 group-hover:text-white transition-colors"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center group hover:bg-blue-600 transition-all duration-300">
-                        <i class="fab fa-twitter text-blue-400 group-hover:text-white transition-colors"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center group hover:bg-blue-600 transition-all duration-300">
-                        <i class="fab fa-linkedin-in text-blue-400 group-hover:text-white transition-colors"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-blue-600/10 flex items-center justify-center group hover:bg-blue-600 transition-all duration-300">
-                        <i class="fab fa-instagram text-blue-400 group-hover:text-white transition-colors"></i>
-                    </a>
-                </div>
             </div>
 
             <!-- Quick Links -->

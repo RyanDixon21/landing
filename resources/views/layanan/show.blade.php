@@ -4,7 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $service['title'] }} - {{ $settings['company_name'] }}</title>
+    
+    <!-- SEO Meta Tags -->
     <meta name="description" content="{{ $service['description'] }}">
+    <meta name="keywords" content="{{ $service['title'] }}, {{ strtolower($service['title']) }}, layanan {{ strtolower($service['title']) }}, {{ $settings['company_name'] }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ $service['title'] }} - {{ $settings['company_name'] }}">
+    <meta property="og:description" content="{{ $service['description'] }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "{{ $service['title'] }}",
+        "description": "{{ $service['description'] }}",
+        "provider": {
+            "@type": "Organization",
+            "name": "{{ $settings['company_name'] }}",
+            "telephone": "{{ $settings['company_phone'] ?? '' }}",
+            "email": "{{ $settings['company_email'] ?? '' }}"
+        }
+    }
+    </script>
     <script src="https://kit.fontawesome.com/050b5dcfea.js" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
 </head>
@@ -124,7 +152,7 @@
                                 Tim kami siap membantu memberikan solusi terbaik untuk kebutuhan teknologi Anda
                             </p>
                             <div class="flex justify-center space-x-4">
-                                <a href="/kontak" class="inline-flex items-center px-8 py-4 bg-white text-head font-semibold rounded-xl hover:bg-blue-50 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl">
+                                <a href="/contact" class="inline-flex items-center px-8 py-4 bg-white text-head font-semibold rounded-xl hover:bg-blue-50 transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl">
                                     <i class="fas fa-envelope mr-2"></i>
                                     Hubungi Kami
                                 </a>

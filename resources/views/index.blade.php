@@ -4,8 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $settings['pt1'] ?? 'Beranda' }} - {{ $settings['company_name'] ?? 'PT. Digital Raya Fokus' }}</title>
-    <meta name="description" content="{{ $settings['company_description'] ?? '' }}">
-    <meta name="keywords" content="{{ $settings['company_keywords'] ?? '' }}">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{{ $settings['company_description'] ?? 'Penyedia solusi teknologi informasi terpercaya untuk transformasi digital bisnis Anda' }}">
+    <meta name="keywords" content="{{ $settings['company_keywords'] ?? 'teknologi informasi, IT solution, digital transformation, software development, web development, mobile app development, IT consultant' }}">
+    <meta name="author" content="{{ $settings['company_name'] ?? 'PT. Digital Raya Fokus' }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ $settings['pt1'] ?? 'Beranda' }} - {{ $settings['company_name'] ?? 'PT. Digital Raya Fokus' }}">
+    <meta property="og:description" content="{{ $settings['company_description'] ?? 'Penyedia solusi teknologi informasi terpercaya untuk transformasi digital bisnis Anda' }}">
+    <meta property="og:image" content="{{ asset($settings['company_logo'] ?? 'asset/logo.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ $settings['company_name'] ?? 'PT. Digital Raya Fokus' }}",
+        "description": "{{ $settings['company_description'] ?? 'Penyedia solusi teknologi informasi terpercaya' }}",
+        "url": "{{ url('/') }}",
+        "logo": "{{ asset($settings['company_logo'] ?? 'asset/logo.png') }}",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "{{ $settings['company_phone'] ?? '' }}",
+            "email": "{{ $settings['company_email'] ?? '' }}",
+            "contactType": "customer service"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "{{ $settings['company_address'] ?? '' }}"
+        }
+    }
+    </script>
     <link rel="icon" href="{{ $settings['company_logo'] ?? 'asset/logo.png' }}" type="image/x-icon">
     <script src="https://kit.fontawesome.com/050b5dcfea.js" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
@@ -82,7 +117,7 @@
             <a href="/contact" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300">
                 Mulai Sekarang
             </a>
-            <a href="/about" class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300">
+            <a href="/profil" class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-lg transform hover:scale-105 transition-all duration-300">
                 Pelajari Lebih Lanjut
             </a>
         </div>
