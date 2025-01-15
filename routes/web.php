@@ -63,12 +63,8 @@ Route::get('/contact', function () {
 
 Route::get('/portofolio', [PortfolioController::class, 'index'])->name('portofolio');
 
-Route::get('/layanan', function () {
-    $settings = \App\Models\Settings::pluck('value', 'key')->all();
-    return view('layanan', compact('settings'));
-})->name('layanan');
+Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
+Route::get('/layanan/{slug}', [LayananController::class, 'show'])->name('layanan.show');
 
 Route::get('/portofolio', [PortfolioController::class, 'index'])->name('portofolio');
 Route::get('/portofolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
-
-Route::get('/layanan/{slug}', [LayananController::class, 'show'])->name('layanan.show');

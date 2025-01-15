@@ -35,7 +35,7 @@
                      alt="card1 {{ $settings['ic1'] ?? '' }}" 
                      class="w-full h-full object-cover">
             @else
-                <img src="{{ asset('images/card1.jpg') }}" 
+                <img src="{{ asset('asset/image1.jpeg') }}" 
                      alt="slide1" 
                      class="w-full h-full object-cover">
             @endif
@@ -59,7 +59,7 @@
                      alt="card2 {{ $settings['ic2'] ?? '' }}" 
                      class="w-full h-full object-cover">
             @else
-                <img src="{{ asset('images/card2.jpg') }}" 
+                <img src="{{ asset('asset/image2.jpeg') }}" 
                      alt="slide2" 
                      class="w-full h-full object-cover">
             @endif
@@ -103,30 +103,15 @@
 
             <!-- Services Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <a href="{{ route('layanan.show', 'software') }}" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                @foreach($layanans->take(3) as $layanan)
+                <a href="{{ route('layanan.show', $layanan->slug) }}" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
                     <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
-                        <i class="fas fa-laptop-code text-2xl text-blue-600 group-hover:text-white"></i>
+                        <i class="{{ $layanan->icon }} text-2xl text-blue-600 group-hover:text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600">{{ $settings['ts1'] ?? 'Pengembangan Software' }}</h3>
-                    <p class="text-gray-600">{{ $settings['ds1'] ?? 'Solusi software yang disesuaikan dengan kebutuhan bisnis Anda.' }}</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600">{{ $layanan->title }}</h3>
+                    <p class="text-gray-600">{{ $layanan->description }}</p>
                 </a>
-                <!-- Service 2 -->
-                <a href="{{ route('layanan.show', 'infrastruktur') }}" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors">
-                        <i class="fas fa-server text-2xl text-green-600 group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-green-600">{{ $settings['ts2'] ?? 'Infrastruktur IT' }}</h3>
-                    <p class="text-gray-600">{{ $settings['ds2'] ?? 'Layanan infrastruktur IT yang handal dan aman.' }}</p>
-                </a>
-                <!-- Service 3 -->
-                <a href="{{ route('layanan.show', 'konsultasi') }}" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors">
-                        <i class="fas fa-lightbulb text-2xl text-purple-600 group-hover:text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-600">{{ $settings['ts3'] ?? 'Konsultasi IT' }}</h3>
-                    <p class="text-gray-600">{{ $settings['ds3'] ?? 'Konsultasi profesional untuk transformasi digital bisnis Anda.' }}</p>
-                </a>
+                @endforeach
             </div>
 
             <div class="text-center mt-16">

@@ -1,8 +1,14 @@
 @php
 use App\Models\Settings;
+use App\Models\Layanan;
 
 // Ambil semua settings dalam satu query
 $settings = Settings::pluck('value', 'key')->all();
+
+// Ambil layanan yang aktif
+$layanans = Layanan::where('is_active', true)
+                   ->orderBy('order')
+                   ->get();
 @endphp
 
 <!DOCTYPE html>
@@ -30,7 +36,7 @@ $settings = Settings::pluck('value', 'key')->all();
                      alt="logo {{ $settings['company_name'] ?? '' }}" 
                      class="w-12 h-12">
             @else
-                <img src="{{ asset('images/logo.jpg') }}" 
+                <img src="{{ asset('asset/logo.png') }}" 
                      alt="logo" 
                      class="w-12 h-12">
             @endif
@@ -51,11 +57,14 @@ $settings = Settings::pluck('value', 'key')->all();
                     </button>
                     <!-- Dropdown Menu -->
                     <ul class="absolute right-0 mt-2 w-64 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 transform -translate-y-2 scale-95 transition-all duration-200 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 z-10">
-                        <li><a href="{{ url('/layanan/fitur1') }}" class="block px-6 py-3 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600 rounded-t-xl transition-colors duration-200">Konsultasi Teknologi</a></li>
-                        <li><a href="{{ url('/layanan/fitur2') }}" class="block px-6 py-3 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600 transition-colors duration-200">Software Development</a></li>
-                        <li><a href="{{ url('/layanan/fitur3') }}" class="block px-6 py-3 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600 transition-colors duration-200">Infrastruktur Teknologi</a></li>
-                        <li><a href="{{ url('/layanan/fitur4') }}" class="block px-6 py-3 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600 transition-colors duration-200">Layanan Manajemen TI</a></li>
-                        <li><a href="{{ url('/layanan/fitur5') }}" class="block px-6 py-3 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600 rounded-b-xl transition-colors duration-200">Pelatihan dan Sertifikasi</a></li>
+                        @foreach($layanans as $layanan)
+                        <li>
+                            <a href="{{ route('layanan.show', $layanan->slug) }}" 
+                               class="block px-6 py-3 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600 {{ $loop->first ? 'rounded-t-xl' : '' }} {{ $loop->last ? 'rounded-b-xl' : '' }} transition-colors duration-200">
+                                {{ $layanan->title }}
+                            </a>
+                        </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li><a href="{{ url('/contact') }}" class="font-semibold nav-link hover:text-yellow-400 transition-colors duration-200 py-2">{{ $settings['pt5'] ?? 'Contact' }}</a></li>
@@ -125,26 +134,13 @@ $settings = Settings::pluck('value', 'key')->all();
                             
                             <!-- Dropdown Menu -->
                             <div id="mobileDropdownMenu" class="hidden bg-white border-y border-gray-100">
-                                <a href="{{ route('layanan.show', 'konsultasi') }}" class="flex items-center px-12 py-4 text-sm md:text-base text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200">
+                                @foreach($layanans as $layanan)
+                                <a href="{{ route('layanan.show', $layanan->slug) }}" 
+                                   class="flex items-center px-12 py-4 text-sm md:text-base text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200">
                                     <span class="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full mr-3"></span>
-                                    Konsultasi Teknologi
+                                    {{ $layanan->title }}
                                 </a>
-                                <a href="{{ url('/layanan/software') }}" class="flex items-center px-12 py-4 text-sm md:text-base text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200">
-                                    <span class="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full mr-3"></span>
-                                    Software Development
-                                </a>
-                                <a href="{{ url('/layanan/infrastruktur') }}" class="flex items-center px-12 py-4 text-sm md:text-base text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200">
-                                    <span class="w-2 h-2 md:w-3 md:h-3 bg-yellow-500 rounded-full mr-3"></span>
-                                    Infrastruktur Teknologi
-                                </a>
-                                <a href="{{ url('/layanan/manajemen') }}" class="flex items-center px-12 py-4 text-sm md:text-base text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200">
-                                    <span class="w-2 h-2 md:w-3 md:h-3 bg-purple-500 rounded-full mr-3"></span>
-                                    Layanan Manajemen TI
-                                </a>
-                                <a href="{{ url('/layanan/pelatihan') }}" class="flex items-center px-12 py-4 text-sm md:text-base text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200">
-                                    <span class="w-2 h-2 md:w-3 md:h-3 bg-red-500 rounded-full mr-3"></span>
-                                    Pelatihan dan Sertifikasi
-                                </a>
+                                @endforeach
                             </div>
                         </div>
 

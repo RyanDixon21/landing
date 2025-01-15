@@ -7,134 +7,35 @@ use App\Models\Settings;
 
 class SettingsSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $settings = [
-            // ... settings sebelumnya ...
-            
-            [
-                'key' => 'pt1',
-                'value' => 'Beranda'
-            ],
-            [
-                'key' => 'pt2',
-                'value' => 'Profil'
-            ], 
-            [
-                'key' => 'pt3',
-                'value' => 'Portofolio'
-            ], 
-            [
-                'key' => 'pt4',
-                'value' => 'Layanan'
-            ], 
-            [
-                'key' => 'pt5',
-                'value' => 'Kontak'
-            ],
-            [
-                'key' => 'company_name',
-                'value' => 'PT. Digital Raya Fokus'
-            ],
-            [
-                'key' => 'tc1',
-                'value' => 'Selamat Datang di PT. Digital Raya Fokus'
-            ],
-            [
-                'key' => 'dc1',
-                'value' => 'Mitra terpercaya Anda untuk solusi IT yang inovatif dan profesional.'
-            ],
-            [
-                'key' => 'ic1',
-                'value' => 'asset/image1.jpeg'
-            ],
-            [
-                'key' => 'tc2',
-                'value' => 'Konsultasikan Kebutuhan Anda dan Dapatkan Solusi Terbaik'
-            ],
-            [
-                'key' => 'dc2',
-                'value' => 'Dari pengembangan software hingga konsultasi IT, kami siap menjadi mitra teknologi terpercaya Anda.'
-            ],
-            [
-                'key' => 'ic2',
-                'value' => 'asset/image2.jpeg'
-            ],
-            [
-                'key' => 'ic3',
-                'value' => 'asset/image2.jpeg'
-            ],
-            [
-                'key' => 'ic4',
-                'value' => 'asset/image2.jpeg'
-            ],
-            [
-                'key' => 'company_keywords',
-                'value' => 'Digital Raya Fokus, teknologi, transformasi digital, software development, konsultasi teknologi, infrastruktur IT'
-            ],
-            [
-                'key' => 'company_logo', 
-                'value' => 'asset/logo.png'
-            ],
-            [
-                'key' => 'company_visi',
-                'value' => 'Menjadi perusahaan teknologi informasi terdepan yang memberikan solusi inovatif dan berkelanjutan untuk mendukung transformasi digital di Indonesia.'
-            ],
-            [
-                'key' => 'company_misi',
-                'value' => '1) Memberikan layanan TI berkualitas tinggi 2) Mengembangkan solusi digital inovatif 3) Membangun kemitraan jangka panjang 4) Berkontribusi pada ekosistem digital'
-            ],
-            [
-                'key' => 'company_address',
-                'value' => 'Jl. Kapten Sarwono No.32, Banjaran Wetan, Kec. Banjaran, Kabupaten Bandung, Jawa Barat 40377'
-            ],
-            [
-                'key' => 'company_description',
-                'value' => 'Digital Raya Fokus adalah perusahaan teknologi informasi yang berfokus pada pengembangan solusi digital untuk membantu transformasi bisnis klien. Kami menyediakan layanan pengembangan perangkat lunak, konsultasi IT, dan solusi infrastruktur teknologi.'
-            ],
-            [
-                'key' => 'company_tagline',
-                'value' => 'Transformasi Digital untuk Masa Depan Bisnis yang Lebih Baik'
-            ],
-            [
-                'key' => 'index_headline',
-                'value' => 'Solusi untuk Segala Kebutuhan Anda'
-            ],
-            [
-                'key' => 'company_about',
-                'value' => 'Digital Raya Fokus hadir sebagai mitra teknologi terpercaya yang berkomitmen untuk memberikan solusi digital terbaik dan inovatif bagi setiap klien kami.'
-            ],
-            [
-                'key' => 'company_email',
-                'value' => 'info@digitalrayafokus.co.id'
-            ],
-            [
-                'key' => 'company_phone',
-                'value' => '+62 22 5946254'
-            ],
-            [
-                'key' => 'company_profile',
-                'value' => 'PT Digital Raya Fokus adalah perusahaan teknologi informasi yang berfokus pada penyediaan solusi digital komprehensif untuk mendukung transformasi bisnis. Dengan tim profesional yang berpengalaman, kami berkomitmen menghadirkan layanan berkualitas dalam pengembangan software, konsultasi IT, dan implementasi infrastruktur teknologi.'
-            ],
-            [
-                'key' => 'company_logo',
-                'value' => 'asset/logo.png'
-            ],
-            [
-                'key' => 'company_logo2',
-                'value' => 'asset/logo2.png'
-            ],
-            [
-                'key' => 'company_logo3',
-                'value' => 'asset/logo3.png'
-            ],
+            'company_name' => 'PT. Digital Raya Fokus',
+            'company_description' => 'PT Digital Raya Fokus adalah perusahaan teknologi informasi yang berfokus pada penyediaan solusi digital komprehensif untuk mendukung transformasi bisnis.',
+            'company_profile' => 'PT Digital Raya Fokus adalah perusahaan teknologi informasi yang berfokus pada penyediaan solusi digital komprehensif untuk mendukung transformasi bisnis. Kami berkomitmen untuk memberikan layanan berkualitas tinggi dan solusi inovatif yang membantu klien kami mencapai keunggulan kompetitif di era digital.',
+            'company_visi' => 'Menjadi pionir dalam menyediakan solusi teknologi yang inovatif dan memberikan kontribusi positif dalam mengubah lanskap bisnis melalui teknologi informasi.',
+            'company_misi' => 'Memberikan solusi teknologi yang terkini dan inovatif untuk mendukung kebutuhan bisnis pelanggan.
+            Menjadi mitra yang dapat diandalkan dan memberikan layanan berkualitas tinggi.
+            Terus melakukan inovasi dan peningkatan dalam menyediakan solusi teknologi.
+            Membangun hubungan yang saling menguntungkan dengan pelanggan dan mitra.',
+            'company_address' => 'Jl. Raya Digital No. 123, Jakarta Selatan',
+            'company_email' => 'info@digitalrayafokus.com',
+            'company_phone' => '(021) 1234-5678',
+            'company_tagline' => 'Transformasi Digital untuk Masa Depan',
+            'company_keywords' => 'teknologi informasi, solusi digital, transformasi bisnis, IT solution, digital transformation',
+            'tc1' => 'Transformasi Digital untuk Masa Depan',
+            'dc1' => 'Solusi teknologi inovatif untuk mengakselerasi pertumbuhan bisnis Anda',
+            'tc2' => 'Solusi Digital Terpercaya',
+            'dc2' => 'Memberikan layanan teknologi informasi terbaik untuk mendukung kesuksesan bisnis Anda',
+            'pt1' => 'Beranda',
+            'pt2' => 'Profil',
+            'pt3' => 'Portofolio',
+            'pt4' => 'Layanan',
+            'pt5' => 'Contact'
         ];
 
-        foreach ($settings as $setting) {
-            Settings::updateOrCreate(
-                ['key' => $setting['key']],
-                ['value' => $setting['value']]
-            );
+        foreach ($settings as $key => $value) {
+            Settings::set($key, $value);
         }
     }
 } 

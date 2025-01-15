@@ -35,7 +35,7 @@
                                      alt="Logo" 
                                      class="w-16 h-16 rounded-xl">
                             @else
-                                <img src="{{ asset('images/logo-default.png') }}" 
+                            <img src="{{ asset('asset/logo.png') }}" 
                                      alt="Logo" 
                                      class="w-16 h-16 rounded-xl">
                             @endif

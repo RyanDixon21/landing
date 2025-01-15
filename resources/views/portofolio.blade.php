@@ -21,7 +21,7 @@
                      alt="bg portofolio {{ $settings['company_name'] ?? '' }}" 
                      class="w-full h-full object-cover object-center">
             @else
-                <img src="{{ asset('images/bg-portfolio.jpg') }}" 
+                <img src="{{ asset('asset/image3.jpg') }}" 
                      alt="bg portofolio default" 
                      class="w-full h-full object-cover object-center">
             @endif

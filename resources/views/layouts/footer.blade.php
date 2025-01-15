@@ -9,7 +9,7 @@
                              class="w-12 h-12 transform group-hover:scale-105 transition-transform duration-300" 
                              alt="Logo {{ $settings['company_name'] ?? '' }}">
                     @else
-                        <img src="{{ asset('images/logo-default.png') }}" 
+                        <img src="{{ asset('asset/logo.png') }}" 
                              class="w-12 h-12" 
                              alt="Default Logo">
                     @endif

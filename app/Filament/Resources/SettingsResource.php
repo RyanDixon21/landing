@@ -21,32 +21,78 @@ class SettingsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('key')
-                    ->required()
-                    ->unique(ignoreRecord: true)
-                    ->maxLength(255),
-                Forms\Components\Select::make('type')
-                    ->required()
-                    ->options([
-                        'text' => 'Text',
-                        'image' => 'Image',
-                    ])
-                    ->default('text')
-                    ->live(),
-                Forms\Components\Group::make()
+                Forms\Components\Section::make('Informasi Perusahaan')
                     ->schema([
-                        Forms\Components\TextInput::make('value')
-                            ->maxLength(255),
-                    ])
-                    ->visible(fn (Forms\Get $get) => $get('type') === 'text'),
-                Forms\Components\Group::make()
-                    ->schema([
-                        Forms\Components\FileUpload::make('value')
+                        Forms\Components\TextInput::make('company_name')
+                            ->label('Nama Perusahaan')
+                            ->required(),
+                        Forms\Components\FileUpload::make('company_logo')
+                            ->label('Logo Perusahaan')
                             ->image()
                             ->disk('public')
-                            ->directory('settings')
-                    ])
-                    ->visible(fn (Forms\Get $get) => $get('type') === 'image'),
+                            ->directory('settings'),
+                        Forms\Components\Textarea::make('company_description')
+                            ->label('Deskripsi Perusahaan')
+                            ->rows(3),
+                        Forms\Components\Textarea::make('company_visi')
+                            ->label('Visi Perusahaan')
+                            ->rows(3),
+                        Forms\Components\Textarea::make('company_misi')
+                            ->label('Misi Perusahaan')
+                            ->rows(4),
+                    ]),
+                
+                Forms\Components\Section::make('Kontak & Lokasi')
+                    ->schema([
+                        Forms\Components\TextInput::make('company_address')
+                            ->label('Alamat')
+                            ->columnSpan('full'),
+                        Forms\Components\TextInput::make('company_email')
+                            ->label('Email')
+                            ->email(),
+                        Forms\Components\TextInput::make('company_phone')
+                            ->label('Telepon'),
+                    ]),
+
+                Forms\Components\Section::make('SEO & Branding')
+                    ->schema([
+                        Forms\Components\TextInput::make('company_tagline')
+                            ->label('Tagline'),
+                        Forms\Components\Textarea::make('company_keywords')
+                            ->label('Keywords SEO')
+                            ->rows(2),
+                    ]),
+
+                Forms\Components\Section::make('Konten Beranda')
+                    ->schema([
+                        Forms\Components\TextInput::make('tc1')
+                            ->label('Judul Hero Section'),
+                        Forms\Components\TextInput::make('dc1')
+                            ->label('Deskripsi Hero Section'),
+                        Forms\Components\FileUpload::make('ic1')
+                            ->label('Gambar Hero')
+                            ->image()
+                            ->disk('public')
+                            ->directory('settings'),
+                        Forms\Components\TextInput::make('tc2')
+                            ->label('Judul Section 2'),
+                        Forms\Components\TextInput::make('dc2')
+                            ->label('Deskripsi Section 2'),
+                    ]),
+
+                Forms\Components\Section::make('judul halaman')
+                    ->schema([
+                        Forms\Components\TextInput::make('pt1')
+                            ->label('halaman 1'),
+                        Forms\Components\TextInput::make('pt2')
+                            ->label('halaman 2'),
+                        Forms\Components\TextInput::make('pt3')
+                            ->label('halaman 3'),
+                        Forms\Components\TextInput::make('pt4')
+                            ->label('halaman 4'),
+                        Forms\Components\TextInput::make('pt5')
+                            ->label('halaman 5'),
+                    ]),
             ]);
     }
 
@@ -103,9 +149,7 @@ class SettingsResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSettings::route('/'),
-            'create' => Pages\CreateSettings::route('/create'),
-            'edit' => Pages\EditSettings::route('/{record}/edit'),
+            'index' => Pages\EditSettings::route('/'),
         ];
     }
 }

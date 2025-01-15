@@ -3,25 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Settings;
-use Illuminate\Http\Request;
+use App\Models\Layanan;
+use Illuminate\Support\Facades\Log;
 
 class LandingController extends Controller
 {
     public function index()
     {
-        $settings = Settings::pluck('value', 'key')->all();
-        
-        $defaultSettings = [
-            'company_name' => 'PT. Digital Raya Fokus',
-            'company_tagline' => 'Mitra terpercaya Anda untuk solusi IT yang inovatif',
-            'company_description' => 'PT Digital Raya Fokus adalah perusahaan teknologi informasi yang berfokus pada penyediaan solusi digital',
-            'company_keywords' => 'IT, Software, Digital Transformation',
-            'company_logo' => 'asset/logo.png',
-            'company_favicon' => 'asset/logo.png'
-        ];
+        try {
+            $settings = Settings::pluck('value', 'key')->all();
+            $layanans = Layanan::where('is_active', true)
+                              ->orderBy('order')
+                              ->get();
 
-        $settings = array_merge($defaultSettings, $settings);
-
-        return view('index', compact('settings'));
+            return view('index', compact('settings', 'layanans'));
+            
+        } catch (\Exception $e) {
+            Log::error('Error in LandingController@index: ' . $e->getMessage());
+            
+            return view('index', [
+                'settings' => Settings::pluck('value', 'key')->all(),
+                'layanans' => collect([])
+            ]);
+        }
     }
 }

@@ -17,23 +17,43 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Models\Settings;
+use Filament\Support\Facades\FilamentIcon;
+use Illuminate\Support\Facades\Storage;
 
 class AdminlogPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
+        // Ambil settings
+        $settings = Settings::pluck('value', 'key')->all();
+        $companyName = $settings['company_name'] ?? 'Digital Raya Fokus';
+        $companyLogo = $settings['company_logo'] ?? 'asset/logo.png';
+
         return $panel
             ->default()
             ->id('adminlog')
             ->path('adminlog')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
+                'gray' => Color::Gray,
+                'info' => Color::Blue,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
+                'danger' => Color::Rose,
             ])
+            ->brandName($companyName) // Nama perusahaan dari settings
+            ->brandLogo(fn () => view('filament.custom.brand-logo', [
+                'logo' => asset($companyLogo),
+                'companyName' => $companyName
+            ])) // Custom view untuk logo dan nama
+            ->brandLogoHeight('2rem')
+            ->favicon(asset($settings['company_favicon'] ?? 'asset/logo.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                // Pages\Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([

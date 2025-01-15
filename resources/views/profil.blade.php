@@ -49,7 +49,7 @@
                 alt="Logo {{ $settings['company_name'] ?? 'Digital Raya Fokus' }}" 
                      class="relative w-full max-w-lg mx-auto rounded-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
             @else
-                <img src="{{ asset('images/card2.jpg') }}" 
+                <img src="{{ asset('asset/logo2.png') }}" 
                 alt="Logo {{ $settings['company_name'] ?? 'Digital Raya Fokus' }}" 
                      class="relative w-full max-w-lg mx-auto rounded-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
             @endif
@@ -68,47 +68,80 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                <!-- Visi -->
-                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <!-- Visi Card dengan Efek Modern -->
+                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <!-- Background Patterns -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/5 to-blue-500/10 rounded-full -mr-20 -mt-20 transform group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-500/5 to-blue-500/10 rounded-full -ml-16 -mb-16 transform group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <!-- Icon Container dengan Efek -->
                     <div class="relative mb-8">
-                        <div class="flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-2xl mb-6 mx-auto transform group-hover:rotate-6 transition-transform duration-300">
-                            <i class="fa-solid fa-eye text-2xl"></i>
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl mb-6 mx-auto transform group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-eye text-2xl group-hover:scale-110 transition-transform"></i>
                         </div>
+                        <!-- Glow Effect -->
                         <div class="absolute inset-0 bg-blue-600/20 rounded-2xl blur-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">Visi</h2>
-                    <p class="text-gray-600 leading-relaxed text-center">
-                        {{ $settings['company_visi'] ?? 'Menjadi pionir dalam menyediakan solusi teknologi yang inovatif dan memberikan kontribusi positif dalam mengubah lanskap bisnis melalui teknologi informasi.' }}
-                    </p>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10">
+                        <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800 group-hover:from-blue-700 group-hover:to-blue-900 transition-all duration-300">
+                                Visi
+                            </span>
+                        </h2>
+                        <div class="w-20 h-1 bg-gradient-to-r from-blue-600 to-blue-700 mx-auto mb-6 transform origin-left group-hover:scale-x-125 transition-transform duration-300"></div>
+                        <p class="text-gray-600 leading-relaxed text-center relative">
+                            <span class="relative inline-block">
+                                {{ $settings['company_visi'] ?? 'Menjadi pionir dalam menyediakan solusi teknologi yang inovatif dan memberikan kontribusi positif dalam mengubah lanskap bisnis melalui teknologi informasi.' }}
+                                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+                            </span>
+                        </p>
+                    </div>
+
+                    <!-- Decorative Elements -->
+                    <div class="absolute -bottom-6 -right-6 w-12 h-12 bg-blue-50 rounded-full opacity-0 group-hover:opacity-100 transform group-hover:translate-y-2 transition-all duration-500"></div>
+                    <div class="absolute -top-6 -left-6 w-12 h-12 bg-blue-50 rounded-full opacity-0 group-hover:opacity-100 transform group-hover:translate-y-2 transition-all duration-500"></div>
                 </div>
 
-                <!-- Misi -->
-                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <!-- Misi Card dengan List yang Lebih Menarik -->
+                <div class="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                    <!-- Background Pattern -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-500/5 to-blue-500/10 rounded-full -mr-20 -mt-20 transform group-hover:scale-150 transition-transform duration-700"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-500/5 to-blue-500/10 rounded-full -ml-16 -mb-16 transform group-hover:scale-150 transition-transform duration-700"></div>
+                    
+                    <!-- Icon Header -->
                     <div class="relative mb-8">
-                        <div class="flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-2xl mb-6 mx-auto transform group-hover:rotate-6 transition-transform duration-300">
-                            <i class="fa-solid fa-rocket text-2xl"></i>
+                        <div class="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl mb-6 transform group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                            <i class="fa-solid fa-rocket text-2xl group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <div class="absolute inset-0 bg-blue-600/20 rounded-2xl blur-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 text-center mb-6">Misi</h2>
-                    <ul class="space-y-4 text-gray-600">
+                    
+                    <!-- Title -->
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6 relative">Misi</h2>
+                    
+                    <!-- Mission List -->
+                    <ul class="space-y-4 relative">
                         @php
-                            $misiArray = explode('|', $settings['company_misi'] ?? '');
-                            if (empty($misiArray[0])) {
+                            $misiArray = explode("\n", $settings['company_misi'] ?? '');
+                            $misiArray = array_map('trim', $misiArray);
+                            $misiArray = array_filter($misiArray);
+                            
+                            if (empty($misiArray)) {
                                 $misiArray = [
-                                    'Memberikan solusi teknologi yang terkini dan inovatif untuk mendukung kebutuhan bisnis pelanggan.',
-                                    'Menjadi mitra yang dapat diandalkan dan memberikan layanan berkualitas tinggi.',
-                                    'Terus melakukan inovasi dan peningkatan dalam menyediakan solusi teknologi.',
-                                    'Membangun hubungan yang saling menguntungkan dengan pelanggan dan mitra.'
+                                    'Memberikan layanan TI berkualitas tinggiiiiii',
+                                    'Mengembangkan solusi digital inovatif',
+                                    'Membangun kemitraan jangka panjang',
+                                    'Berkontribusi pada ekosistem digital'
                                 ];
                             }
                         @endphp
                         @foreach($misiArray as $misi)
-                        <li class="flex items-start group/item">
-                            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                        <li class="flex items-start group/item hover:transform hover:translate-x-2 transition-all duration-300">
+                            <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-blue-600 group-hover/item:from-blue-600 group-hover/item:to-blue-700 transition-all duration-300 shadow-sm">
                                 <i class="fa-solid fa-check text-blue-600 group-hover/item:text-white transition-colors"></i>
                             </div>
-                            <span>{{ trim($misi) }}</span>
+                            <span class="text-gray-600 group-hover/item:text-gray-900 transition-colors">{{ trim($misi) }}</span>
                         </li>
                         @endforeach
                     </ul>
