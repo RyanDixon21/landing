@@ -30,15 +30,15 @@
                     <div class="space-y-8">
                         <!-- Company Info -->
                         <div class="flex items-center space-x-4 mb-8">
-                            @if(isset($settings['company_logo']) && $settings['company_logo'])
-                                <img src="{{ asset('storage/' . $settings['company_logo']) }}" 
-                                     alt="Logo" 
-                                     class="w-16 h-16 rounded-xl">
-                            @else
+                            @if(isset($settings['company_logo2']) && $settings['company_logo2'])
+                            <img src="{{ asset('storage/' . $settings['company_logo2']) }}" 
+                            alt="Logo {{ $settings['company_name'] ?? 'Digital Raya Fokus' }}" 
+                                 class="relative w-full max-w-lg mx-auto rounded-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
+                        @else
                             <img src="{{ asset('asset/logo.png') }}" 
-                                     alt="Logo" 
-                                     class="w-16 h-16 rounded-xl">
-                            @endif
+                            alt="Logo {{ $settings['company_name'] ?? 'Digital Raya Fokus' }}" 
+                                 class="w-12 h-12">
+                        @endif
                             <div>
                                 <h3 class="text-xl font-bold text-gray-900">{{ $settings['company_name'] ?? 'Digital Raya Fokus' }}</h3>
                                 <p class="text-gray-500">{{ $settings['company_tagline'] ?? 'Solusi Digital Terpercaya' }}</p>

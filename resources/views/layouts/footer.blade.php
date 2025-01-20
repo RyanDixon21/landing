@@ -4,15 +4,15 @@
             <!-- Company Info -->
             <div class="space-y-6">
                 <div class="flex items-center space-x-3 group">
-                    @if(isset($settings['company_logo']) && $settings['company_logo'])
-                        <img src="{{ asset('storage/' . $settings['company_logo']) }}" 
-                             class="w-12 h-12 transform group-hover:scale-105 transition-transform duration-300" 
-                             alt="Logo {{ $settings['company_name'] ?? '' }}">
-                    @else
-                        <img src="{{ asset('asset/logo.png') }}" 
-                             class="w-12 h-12" 
-                             alt="Default Logo">
-                    @endif
+                    @if(isset($settings['company_logo2']) && $settings['company_logo2'])
+                    <img src="{{ asset('storage/' . $settings['company_logo2']) }}" 
+                    alt="Logo {{ $settings['company_name'] ?? 'Digital Raya Fokus' }}" 
+                         class="relative w-full max-w-lg mx-auto rounded-2xl transform group-hover:-translate-y-2 transition-transform duration-500">
+                @else
+                    <img src="{{ asset('asset/logo.png') }}" 
+                    alt="Logo {{ $settings['company_name'] ?? 'Digital Raya Fokus' }}" 
+                         class="w-12 h-12">
+                @endif
                     <div>
                         <h3 class="text-xl font-bold mb-1">{{ $settings['company_name'] }}</h3>
                         <div class="w-20 h-0.5 bg-blue-500 transform origin-left group-hover:scale-x-150 transition-transform duration-300"></div>

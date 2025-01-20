@@ -20,15 +20,23 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use App\Models\Settings;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Schema;
 
 class AdminlogPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        // Ambil settings
-        $settings = Settings::pluck('value', 'key')->all();
-        $companyName = $settings['company_name'] ?? 'Digital Raya Fokus';
-        $companyLogo = $settings['company_logo'] ?? 'asset/logo.png';
+        try {
+            $settings = Schema::hasTable('app_settings') 
+                ? Settings::pluck('value', 'key')->all() 
+                : [];
+            
+            $companyName = $settings['company_name'] ?? 'Digital Raya Fokus';
+            $companyLogo = $settings['company_logo'] ?? 'asset/logo.png';
+        } catch (\Exception $e) {
+            $companyName = 'Digital Raya Fokus';
+            $companyLogo = 'asset/logo.png';
+        }
 
         return $panel
             ->default()
@@ -43,11 +51,11 @@ class AdminlogPanelProvider extends PanelProvider
                 'warning' => Color::Orange,
                 'danger' => Color::Rose,
             ])
-            ->brandName($companyName) // Nama perusahaan dari settings
+            ->brandName($companyName)
             ->brandLogo(fn () => view('filament.custom.brand-logo', [
                 'logo' => asset($companyLogo),
                 'companyName' => $companyName
-            ])) // Custom view untuk logo dan nama
+            ]))
             ->brandLogoHeight('2rem')
             ->favicon(asset($settings['company_favicon'] ?? 'asset/logo.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
